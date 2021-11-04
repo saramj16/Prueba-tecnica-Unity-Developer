@@ -1,15 +1,24 @@
 Decisiones tomadas
-En primer lugar, pensé como estructurar los números que van saliendo por la pantalla. Al utilizar una estética 
-concreta he usado ScriptableObjects de las cartas, estos objetos tienen tres componentes a guardar, el Sting del 
-número, el int del número y el Sprite de la carta.
-En caso de que se necesitaran más cosas solo se tendrían que añadir, además se podrían guardar traducciones de 
-los números si fuera necesario.
-Esta parte se podría hacer de otra manera ya que se podría diseñar una función que se encargara de traducir el 
-número X a Sting. Por comodidad se ha estructurado con los ScriptableObjects donde es muy fácil gestionarlo todo 
-con sus Sprites correspondientes.
+En primer lugar, pensé como estructurar los números que van saliendo por la pantalla. Al utilizar 
+una estética concreta he usado ScriptableObjects para las cartas, que tienen tres componentes a 
+guardar: el String del número, el int del número y el Sprite de la carta.
+En caso de que se necesitaran más cosas solo se tendrían que añadir, además se podrían guardar 
+traducciones de los números si fuera necesario.
+En caso de que no se utilizaran ScriptableObjects esta parte se podría hacer de otra manera, ya 
+que se podría diseñar una función que se encargara de traducir el número X a String. Por comodidad 
+se ha estructurado con los ScriptableObjects donde es muy fácil gestionarlo todo con sus Sprites correspondientes.
 La estética escogida se ha decido para dar un enfoque al ejercicio y hacerlo más visual y divertido.
-También he decidido que el juego se gestionaría entero des del GameController, allí se hacen todas las llamadas en 
-orden, y después el numero aleatorio que va saliendo y las opciones tienen otros scripts para gestionar su animación 
-de salida y como reaccionan ante las interacciones.
-Hay un script que se encarga de modificar los parámetros en pantalla de los aciertos y errores, en este caso solo 
-son dos, pero en el caso que la interfaz fuese más completa se encargaría de gestionar todos los otros parámetros.
+También he decidido que el juego se gestionaría entero des del GameController, allí se hacen todas 
+las llamadas en orden, y después el numero aleatorio que va saliendo y las opciones tienen otros scripts 
+para gestionar su animación de salida y cómo reaccionan ante las interacciones.
+El script de Opciones se encarga de gestionar el clic en los botones, des de allí se comprueba si ha 
+acertado o no y se modifica el color del botón. También se gestionan las animaciones de salida. Los 
+botones se activan solamente cuando ya están en posición para que así no se cliquen por error cuando están saliendo.
+El script de los números aleatorios es más sencillo, y solo controla el fadeIn o fadeOut de los números. 
+Hay un script que se encarga de modificar los parámetros en pantalla de los aciertos y errores, en este 
+caso solo son dos, pero en el caso que la interfaz fuese más completa se encargaría de gestionar todos los 
+otros parámetros.
+Los scripts se han fraccionado para poder gestionar cosas distintas des de cada uno, así la depuración del 
+código es más sencilla y está todo más ordenado.
+Igualmente, siempre hay el script principal des de donde se va controlando el flujo. Gracias a esto podemos 
+saber que va pasando en cada momento y des de allí buscar donde están los problemas.

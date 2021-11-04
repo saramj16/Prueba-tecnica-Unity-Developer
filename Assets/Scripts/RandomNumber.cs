@@ -19,6 +19,8 @@ public class RandomNumber : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // Si se ha activado el fadeIn
         if(fadeIn == true)
         {
             this.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0, alpha);
@@ -34,6 +36,7 @@ public class RandomNumber : MonoBehaviour
             }
         }
 
+        // Si se ha activado el fadeOut
         if (fadeOut == true)
         {
             this.gameObject.GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0, alpha);

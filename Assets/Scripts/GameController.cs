@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
         
     }
 
+    // Asignar las cartas que tienen que salir como opciones
     void AssignOptions() {
         int numberAssigned;
         for(int i = 0; i < options.Length; i++) {
@@ -56,7 +57,7 @@ public class GameController : MonoBehaviour
         DecideRightOption();
     }
 
-
+    //Activar las opciones cuando sea necesario
     private void ActiveOptions()
     {
         op.GetComponent<Options>().FillOptions(options);
@@ -64,6 +65,8 @@ public class GameController : MonoBehaviour
         brazo.GetComponent<Animator>().SetBool("active", true);
         StartCoroutine(op.GetComponent<Options>().ButtonsInteractables(1f));
     }
+
+    //Crear el numero aleatorio y mostrarlo por pantalla
     private void CreateNumber()
     {
         numberPrefab.GetComponent<TextMeshProUGUI>().text = rightNumber.wordNumber;
@@ -71,6 +74,7 @@ public class GameController : MonoBehaviour
         numberPrefab.GetComponent<RandomNumber>().FadeIn();
     }
 
+    //Mira si ya existe la opcion escogida para no repetir numeros
     private bool CheckOtherOptions(int num) {   
         if(asignedOptions == 0) {
             return true;
@@ -85,6 +89,7 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //Decide la opcion correcta de las tres escogidas
     private void DecideRightOption()
     {
         int option = Random.Range(0, options.Length);
@@ -92,22 +97,26 @@ public class GameController : MonoBehaviour
         rightOption = option;
     }
 
+    //Incrementa los errores
     public void SumaIncorrecte()
     {
         mistakes++;
     }
 
-
+    //Incrementa los aciertos
     public void SumaCorrecte()
     {
         success++;
     }
+
+    //Activa la animación de salida
     public void AnimacioSortida()
     {
         brazo.GetComponent<Animator>().SetBool("active", false);
         Invoke("NextRound", 2f);
     }
 
+    //Activa la siguente ronda
     void NextRound()
     {
         asignedOptions = 0;
